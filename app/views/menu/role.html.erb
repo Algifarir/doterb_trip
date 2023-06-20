@@ -1,0 +1,27 @@
+<h2> Menu Role List</h2>
+
+<%= search_form_for @q, url: menu_role_path do |f| %>
+  <%= f.label :search %>
+  <%= f.search_field :name_cont %>
+  <%= f.submit %>
+<% end %>
+<table>
+  <thead>
+      <tr>
+        <td><strong>id</strong></td>
+        <td><strong>role</strong></td>
+        <td><strong>description</strong></td>
+      </tr>
+  </thead>
+  <tbody>
+    <% @role.each do |r| %>
+      <tr>
+        <td><%= r.id %></td>
+        <td><%= r.name %></td>
+        <td><%= r.description %></td>
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'back', menu_path %>

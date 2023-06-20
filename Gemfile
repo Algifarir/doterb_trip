@@ -54,3 +54,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'rolify'
+gem 'carrierwave', '>= 3.0.0.rc', '< 4.0'
+gem 'kaminari'
+gem 'ransack'

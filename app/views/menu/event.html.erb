@@ -1,0 +1,49 @@
+<h2>Menu Event</h2>
+
+<%= search_form_for @q, url: menu_event_path do |f| %>
+  <%= f.label :search %>
+  <%= f.search_field :name_cont %>
+  <%= f.submit %>
+<% end %>
+<%= paginate @events %>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Description</th>
+      <th>Photo</th>
+      <th>status attendance</th>
+      <th>Check Attendant</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.id %></td>
+        <td><%= event.name %></td>
+        <td><%= event.start_date %></td>
+        <td><%= event.end_date %></td>
+        <td><%= event.description %></td>
+        <td><img class="w-50"src="<%= event.photo %>"></td>
+        
+        <td>
+          
+          <% if Attendance.find_by(user_id: current_user.id, event_id: event.id).present? %>
+            Sudah Pilih
+          <% else %>
+            <%= button_to 'Hadir', create_attendance_path(user_id: current_user.id, event_id: event.id), method: :post %>
+            <%= button_to 'Absen', create_absent_path(user_id: current_user.id, event_id: event.id), method: :post %>
+          <% end %>
+          
+          
+        </td>
+        <td><%= link_to 'Check Attendant', menu_attendance_path(event.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @events %>

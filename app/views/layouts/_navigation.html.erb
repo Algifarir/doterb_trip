@@ -1,0 +1,10 @@
+  <ul class="navbar">
+    <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to 'Home', root_path %></li>
+    <li class="<%= 'active' if current_page?(menu_user_path) %>"><%= link_to 'User', menu_user_path %></li>
+    <li class="<%= 'active' if current_page?(menu_role_path) %>"><%= link_to 'Role', menu_role_path %></li>
+    <li class="<%= 'active' if current_page?(menu_event_path) %>"><%= link_to 'Event', menu_event_path %></li>  
+    <% if current_user.roles.exists?(name: 'admin') %>
+      <li class="<%= 'active' if current_page?(events_path) %>"><%= link_to 'Edit Event', events_path %></li>
+    <% end %>
+    
+  </ul>

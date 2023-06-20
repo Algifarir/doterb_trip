@@ -1,0 +1,34 @@
+<h2> Menu User List</h2>
+
+<%= search_form_for @q, url: menu_user_path do |f| %>
+  <%= f.label :search %>
+  <%= f.search_field :full_name_or_email_cont %>
+  <%= f.submit %>
+<% end %>
+<br>
+<%= paginate @user %>
+<table>
+  <thead>
+      <tr>
+        <td><strong>id</strong></td>
+        <td><strong>full_name</strong></td>
+        <td><strong>email</strong></td>
+        <td><strong>role</strong></td>
+      </tr>
+  </thead>
+  <tbody>
+    <% @user.each do |u| %>
+      <tr>
+        <td><%= u.id %></td>
+        <td><%= u.full_name %></td>
+        <td><%= u.email %></td>
+        <td><%= u.roles.pluck(:name) %></td>
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'back', menu_path %>
+
+
+  

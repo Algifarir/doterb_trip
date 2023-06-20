@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>New User Registration</title>
+</head>
+<body>
+  <h1>New User Registration</h1>
+  
+  <p>Dear <%= @user.full_name %>,</p>
+  
+  <p>Thank you for registering with our website. Your account has been successfully created.</p>
+  
+  <p>Here are your account details:</p>
+  <ul>
+    <li><strong>Name:</strong> <%= @user.full_name %></li>
+    <li><strong>Email:</strong> <%= @user.email %></li>
+  </ul>
+  
+  <p>If you have any questions or need further assistance, please don't hesitate to contact us.</p>
+  
+  <p>Best regards,</p>
+  <p>Your Website Team</p>
+</body>
+</html>
